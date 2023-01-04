@@ -1,6 +1,44 @@
 {
-    "extends": "salt-typescript",
-    "parserOptions": {
-        "project": "tsconfig.json"
-    }
+  "extends": "salt-typescript",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never",
+        "": "never"
+      }
+    ]
+  }
 }
+
+// {
+//   "extends": ["salt-typescript"],
+//   "parserOptions": {
+//     "ecmaFeatures": {
+//       "jsx": true
+//     },
+//     "ecmaVersion": "latest",
+//     "sourceType": "module",
+//     "project": "./tsconfig.json"
+//   },
+//   "rules": {
+//     "import/extensions": [
+//       "error",
+//       "ignorePackages",
+//       {
+//         "js": "never",
+//         "jsx": "never",
+//         "ts": "never",
+//         "tsx": "never",
+//         "": "never"
+//       }
+//     ]
+//   }
+// }
