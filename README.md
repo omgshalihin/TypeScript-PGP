@@ -73,6 +73,7 @@ npm i eslint-config-salt-typescript
     "project": "tsconfig.json"
   },
   "rules": {
+    "import/prefer-default-export": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
