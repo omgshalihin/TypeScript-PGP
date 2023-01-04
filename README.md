@@ -65,7 +65,7 @@ npm i @tsconfig/node16 @types/mocha @types/node
 ```
 npm i eslint-config-salt-typescript
 ```
-### add a file called `.eslintrc` with the following content:
+### in the root location, add a file called `.eslintrc` with the following content:
 ```
 {
   "extends": "salt-typescript",
