@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './RandomUser.css';
 
 const RandomUser = () => {
   const [userData, setUserData] = useState({
@@ -24,8 +25,8 @@ const RandomUser = () => {
 
   return (
     <div>
-      <div className='apple'>
-        <h2>User Details</h2>
+      <div className='user--details__container'>
+        <h2><u>User Details</u></h2>
         <h3>My name is {userData.name}.</h3>
         <h3>I am {userData.age} years old.</h3>
         <h3>I'm living at {userData.address}.</h3>
