@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './RandomUser.css';
 
 const RandomUser = () => {
-  const [userData, setUserData] = useState({
+  type User = {
+    name: string,
+    age: number,
+    address: string
+  };
+
+  const [userData, setUserData] = useState<User>({
     name: ' ',
     age: 0,
     address: '',
