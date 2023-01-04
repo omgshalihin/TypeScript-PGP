@@ -1,5 +1,5 @@
 {
-  "extends": "salt-typescript",
+  "extends": ["salt-typescript"],
   "parserOptions": {
     "project": "tsconfig.json"
   },
@@ -30,6 +30,7 @@
 //     "project": "./tsconfig.json"
 //   },
 //   "rules": {
+//     "import/prefer-default-export": "off",
 //     "import/extensions": [
 //       "error",
 //       "ignorePackages",
