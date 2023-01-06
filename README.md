@@ -1,7 +1,7 @@
 ## About TypeScript
 ...
 
-## Create react application with typescript
+## Create React Application with Typescript
 ```
 npx create-react-app <app-name> --template typescript
 npx gitignore node 
