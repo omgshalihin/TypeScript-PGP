@@ -8,7 +8,7 @@ npx gitignore node
 npm i typescript ts-node mocha
 npm i @tsconfig/node16 @types/mocha @types/node
 ```
-### Within `tsconfig.json` file, add these additional content to it:
+### Within `tsconfig.json` file, add this additional content to it:
 ```
 {
   "extends": "@tsconfig/node16/tsconfig.json",
