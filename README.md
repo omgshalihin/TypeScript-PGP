@@ -21,7 +21,7 @@ npm i @tsconfig/node16 @types/mocha @types/node
 ```
 
 <details>
-  <summary>how my tsconfig.json file looks</summary>
+  <summary>how my tsconfig.json file looks like</summary>
   
   ```
   {
