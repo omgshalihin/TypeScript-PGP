@@ -22,8 +22,6 @@ public class PuppyServiceImplementation implements PuppyService {
         return puppyRepository.findAll();
     }
 
-
-
     @Override
     public Puppy getSpecificPuppy(String id) {
         return puppyRepository.findPuppyById(id);
@@ -39,5 +37,12 @@ public class PuppyServiceImplementation implements PuppyService {
         puppyRepository.deletePuppyById(id);
     }
 
-
+    @Override
+    public Puppy replacePuppy(String id, Puppy newPuppyDetails) {
+        Puppy replacePuppy = puppyRepository.findPuppyById(id);
+        replacePuppy.setName(newPuppyDetails.getName());
+        replacePuppy.setDob(newPuppyDetails.getDob());
+        replacePuppy.setBreed(newPuppyDetails.getBreed());
+        return puppyRepository.save(replacePuppy);
+    }
 }

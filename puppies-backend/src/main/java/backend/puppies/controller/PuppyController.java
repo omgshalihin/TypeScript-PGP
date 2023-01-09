@@ -48,4 +48,13 @@ public class PuppyController {
     public void removePuppy(@PathVariable String id) {
         puppyService.removePuppy(id);
     }
+
+    @PutMapping("/{id}")
+    ResponseEntity<Puppy> replacePuppy(@PathVariable String id, @RequestBody Puppy newPuppyDetails) {
+        if (puppyService.getSpecificPuppy(id) == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Puppy replacedPuppy = puppyService.replacePuppy(id, newPuppyDetails);
+        return ResponseEntity.status(HttpStatus.OK).body(replacedPuppy);
+    }
 }

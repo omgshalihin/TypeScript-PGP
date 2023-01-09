@@ -16,4 +16,6 @@ public interface PuppyService {
     Puppy addPuppy(Puppy puppyDetails);
 
     void removePuppy(String id);
+
+    Puppy replacePuppy(String id, Puppy newPuppyDetails);
 }
