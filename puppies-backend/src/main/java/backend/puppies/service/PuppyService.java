@@ -14,4 +14,6 @@ public interface PuppyService {
     Puppy getSpecificPuppy(String id);
 
     Puppy addPuppy(Puppy puppyDetails);
+
+    void removePuppy(String id);
 }

@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface PuppyRepository extends MongoRepository<Puppy, ObjectId> {
     Puppy findPuppyById(String id);
+
+    void deletePuppyById(String id);
 }

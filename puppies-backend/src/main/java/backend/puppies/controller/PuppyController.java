@@ -42,4 +42,10 @@ public class PuppyController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(puppyService.getSpecificPuppy(id));
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void removePuppy(@PathVariable String id) {
+        puppyService.removePuppy(id);
+    }
 }

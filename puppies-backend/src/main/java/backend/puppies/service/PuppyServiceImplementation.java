@@ -34,5 +34,10 @@ public class PuppyServiceImplementation implements PuppyService {
         return puppyRepository.save(puppyDetails);
     }
 
+    @Override
+    public void removePuppy(String id) {
+        puppyRepository.deletePuppyById(id);
+    }
+
 
 }
