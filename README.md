@@ -15,6 +15,7 @@ npm i @tsconfig/node16 @types/mocha @types/node
   "compilerOptions": {
     "outDir": "dist"
   },
+
   "include": ["src"],
   "exclude": ["node_modules"],
 }
