@@ -34,7 +34,7 @@ const App = () => {
       <header className="app-header">
       <h1>Puppies</h1>
       {data.map(puppy => (
-          <div className='puppy-details'>
+          <div className='puppy-details' key={puppy.id}>
             <h2>Name: {puppy.name}</h2>
             <h2>Breed: {puppy.breed}</h2>
             <h2>DOB: {puppy.dob}</h2>
