@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 import Puppies from './components/Puppies';
 
 const App = () => {
@@ -26,8 +28,9 @@ const App = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Puppies</h1>
+        <Navbar />
         <Puppies puppies={data} />
+        <Footer />
       </header>
     </div>
   );

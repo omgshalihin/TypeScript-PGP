@@ -12,6 +12,7 @@ type DataType = {
 
 const Puppies = ({ puppies } : DataType) => (
         <div>
+            <h1>Puppies</h1>
             {puppies.map(puppy => (
               <div className='puppy-details' key={puppy.id}>
                 <h2>Name: {puppy.name}</h2>
