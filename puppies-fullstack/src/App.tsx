@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import FixedBottomNavigation from './components/FixedBottomNavigation';
 import TopNav from './components/TopNav';
 import Home from './components/Home';
+import Add from './components/Add';
 
 const App = () => {
   const [data, setData] = useState();
@@ -31,16 +32,20 @@ const App = () => {
     setSearch(dataa);
   };
 
+  const pullDataFromBottomNav = (dataa: React.SetStateAction<string>) => {
+    setSearch(dataa);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
         <TopNav func={pullData} />
         <Routes>
           <Route path='/' element={<Home puppies={data} search={search} />} />
-          {/* <Route path='/' element={<Favorites />} /> */}
+          <Route path='/add' element={<Add />} />
         </Routes>
         {/* <Puppies puppies={data}/> */}
-        <FixedBottomNavigation />
+        <FixedBottomNavigation data={data} func={pullDataFromBottomNav} />
       </header>
     </div>
   );

@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
+import UpdateIcon from '@mui/icons-material/Update';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Stack from '@mui/material/Stack';
 
 type DataType = {
@@ -38,8 +39,11 @@ export default function DeleteFavButton({ singlePuppy } : DataType) {
       <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => deletePuppy(puppyId)}>
         Delete
       </Button>
-      <Button variant="contained" endIcon={<SendIcon />}>
-        Send
+      <Button variant="contained" startIcon={<UpdateIcon />}>
+        Update
+      </Button>
+      <Button variant="contained" startIcon={<FavoriteIcon />}>
+        Favorite
       </Button>
     </Stack>
   );

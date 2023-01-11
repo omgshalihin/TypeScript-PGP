@@ -3,11 +3,12 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HomeIcon from '@mui/icons-material/Home';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Paper from '@mui/material/Paper';
 import './FixedBottomNavigation.css';
+import { useNavigate } from 'react-router-dom';
 // import Puppies from './Puppies';
 
 // type DataType = {
@@ -19,9 +20,19 @@ import './FixedBottomNavigation.css';
 //   }[]
 // };
 
-export default function FixedBottomNavigation() {
+export default function FixedBottomNavigation({ data, func } : any) {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const clickHomeHandler = (dataa: any) => {
+    func(dataa);
+    navigate('/');
+  };
+
+  const clickAddHandler = () => {
+    navigate('/add');
+  };
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
@@ -37,9 +48,9 @@ export default function FixedBottomNavigation() {
             setValue(newValue);
           }}
         >
-            <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+            <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={() => clickHomeHandler(data)} />
             <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+            <BottomNavigationAction label="Add" icon={<AddCircleIcon />} onClick={clickAddHandler} />
         </BottomNavigation>
       </Paper>
     </Box>
