@@ -21,13 +21,14 @@ const App = () => {
   }, []);
 
   if (data === undefined) return <h1>Loading Main Page...</h1>;
+  console.log(data);
 
   if (error) return <h1>Please look at this error: {error}</h1>;
 
   return (
     <div className="app">
       <header className="app-header">
-        {/* <Puppies puppies={data} /> */}
+        <h1>Puppies App</h1>
         <FixedBottomNavigation puppies={data} />
       </header>
     </div>
