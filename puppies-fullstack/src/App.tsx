@@ -21,7 +21,6 @@ const App = () => {
   }, []);
 
   if (data === undefined) return <h1>Loading Main Page...</h1>;
-  console.log(data);
 
   if (error) return <h1>Please look at this error: {error}</h1>;
 

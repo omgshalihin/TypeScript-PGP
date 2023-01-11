@@ -37,7 +37,6 @@ export default function Puppies({ puppies } : DataType) {
   }, []);
 
   if (res === undefined) return <h1>Loading Dog Pictures...</h1>;
-  console.log(res);
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
