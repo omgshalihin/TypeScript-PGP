@@ -3,6 +3,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Add() {
   const navigate = useNavigate();
@@ -12,7 +15,7 @@ export default function Add() {
     dob: '',
   });
 
-  const addPuppy = (newPup: { breed: string; name: string; dob: string; }) => {
+  const addPuppy = (newPup: { breed: string; name: string; dob: string }) => {
     fetch('http://localhost:8080/api/puppies', {
       method: 'POST',
       mode: 'cors',
@@ -48,6 +51,9 @@ export default function Add() {
       onSubmit={handleSubmit}
     >
       <TextField
+        sx={{
+          '& > :not(style)': { color: 'white' },
+        }}
         id="outlined-basic"
         label="Name of Puppy"
         variant="outlined"
@@ -56,6 +62,9 @@ export default function Add() {
         onChange={handleChange}
       />
       <TextField
+        sx={{
+          '& > :not(style)': { color: 'white' },
+        }}
         id="outlined-basic"
         label="Breed"
         variant="outlined"
@@ -64,6 +73,9 @@ export default function Add() {
         onChange={handleChange}
       />
       <TextField
+        sx={{
+          '& > :not(style)': { color: 'white' },
+        }}
         id="outlined-basic"
         label="yyyy-mm-dd"
         variant="outlined"
@@ -71,7 +83,11 @@ export default function Add() {
         name="dob"
         onChange={handleChange}
       />
-      <button type="submit">Submit</button>
+      <Stack direction="row" spacing={2}>
+      <Button type='submit' variant="contained" endIcon={<SendIcon />}>
+        Submit
+      </Button>
+    </Stack>
     </Box>
   );
 }
