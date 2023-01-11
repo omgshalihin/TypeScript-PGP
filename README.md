@@ -1,3 +1,10 @@
+## Under Development...
+### Puppies App (Mobile First)
+- Frontend [repository](https://github.com/omgshalihin/typescript-pgp/tree/main/puppies-fullstack)
+- Backend [repository](https://github.com/omgshalihin/typescript-pgp/tree/main/puppies-backend)
+
+![Screenshot 2023-01-11 at 04 22 54](https://user-images.githubusercontent.com/52775977/211710599-fbbb7232-2736-49a6-87ba-d1b23c0bae45.png)
+
 ## About TypeScript
 ...
 
