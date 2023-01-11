@@ -25,12 +25,25 @@ type DataType = {
 
 export default function FixedBottomNavigation({ puppies } : DataType) {
   const [value, setValue] = React.useState(0);
+  const [res, setRes] = React.useState<any[]>();
   const ref = React.useRef<HTMLDivElement>(null);
   const date = new Date();
   let d2 = date.getDate();
   let m2 = 1 + date.getMonth();
   let y2 = date.getFullYear();
   const month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  React.useEffect(() => {
+    const fetchImage = async () => {
+      const response = await fetch(`https://api.unsplash.com/search/photos?page=1&query=dog&client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`);
+      const newImage = await response.json();
+      const result = newImage.results;
+      setRes(result);
+    };
+    fetchImage();
+  }, []);
+
+  if (res === undefined) return <h1>Loading Dog Pictures...</h1>;
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
@@ -56,7 +69,7 @@ export default function FixedBottomNavigation({ puppies } : DataType) {
           return (
                 <ListItem button key={index}>
                   <ListItemAvatar>
-                    <Avatar alt="Profile Picture" src="/static/images/avatar/1.jpg" />
+                    <Avatar alt="Profile Picture" src={res[index].urls.small} />
                   </ListItemAvatar>
                   <ListItemText
                   primary={`${puppy.name} : ${y} years ${m} months ${d} days old`}

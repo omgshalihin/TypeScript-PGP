@@ -20,7 +20,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  if (data === undefined) return <h1>Loading...</h1>;
+  if (data === undefined) return <h1>Loading Main Page...</h1>;
 
   if (error) return <h1>Please look at this error: {error}</h1>;
 
