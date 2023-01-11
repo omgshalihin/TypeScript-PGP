@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import FixedBottomNavigation from './components/FixedBottomNavigation';
+import TopNav from './components/TopNav';
 // import Puppies from './components/Puppies';
 
 const App = () => {
@@ -27,9 +28,11 @@ const App = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Puppies App</h1>
+        <TopNav />
+        <h1 className='header'>Puppies App</h1>
         <FixedBottomNavigation puppies={data} />
       </header>
+
     </div>
   );
 };
