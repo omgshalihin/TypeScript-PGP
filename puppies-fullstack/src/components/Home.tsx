@@ -11,17 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import './Home.css';
 import DeleteFavButton from './DeleteFavButton';
 
-type DataType = {
-  puppies: {
-    id: string;
-    name: string;
-    breed: string;
-    dob: string;
-  }[];
-};
-
-export default function Home({ puppies }: DataType) {
-//   const navigate = useNavigate();
+export default function Home({ puppies, search }: any) {
   const [res, setRes] = React.useState<any[]>();
   const [singlePuppy, setSinglePuppy] = React.useState<any[]>();
   const [length, setLength] = React.useState<number>();
@@ -33,7 +23,7 @@ export default function Home({ puppies }: DataType) {
   const month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
   const viewPuppyHandler = (id: string) => {
-    setSinglePuppy(puppies.filter(item => item.id === id));
+    setSinglePuppy(puppies.filter((item: { id: string; }) => item.id === id));
     setLength(1);
   };
 
@@ -47,9 +37,16 @@ export default function Home({ puppies }: DataType) {
       setRes(result);
       setSinglePuppy(puppies);
       setLength(puppies.length);
+
+      if (search !== ' ') {
+        setSinglePuppy(puppies.filter((p: { breed: string; name: string; }) => (p.breed === search || p.name === search)));
+        if (search === '') {
+          setSinglePuppy(puppies);
+        }
+      }
     };
     fetchImage();
-  }, []);
+  }, [search, puppies]);
 
   if (res === undefined) return <h1>Loading Dog Pictures...</h1>;
   if (singlePuppy === undefined) return <h1>Loading the puppy of your choice...</h1>;

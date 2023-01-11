@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import './TopNav.css';
+import { useState } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -49,12 +50,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function TopNav() {
+export default function TopNav(props: { func: (arg0: string) => void; }) {
+  const [search, setSearch] = useState(' ');
+  const searchHandler = (e: React.FormEvent<HTMLDivElement>) => {
+    const { value } = e.target as HTMLInputElement;
+    setSearch(value);
+  };
+  props.func(search);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar >
-          <Search>
+          <Search onChange={e => searchHandler(e)} >
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>

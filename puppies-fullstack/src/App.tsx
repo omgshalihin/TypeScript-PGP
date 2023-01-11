@@ -8,6 +8,7 @@ import Home from './components/Home';
 const App = () => {
   const [data, setData] = useState();
   const [error, setError] = useState<string>();
+  const [search, setSearch] = useState(' ');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,12 +27,16 @@ const App = () => {
 
   if (error) return <h1>Please look at this error: {error}</h1>;
 
+  const pullData = (dataa: React.SetStateAction<string>) => {
+    setSearch(dataa);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
-        <TopNav />
+        <TopNav func={pullData} />
         <Routes>
-          <Route path='/' element={<Home puppies={data} />} />
+          <Route path='/' element={<Home puppies={data} search={search} />} />
           {/* <Route path='/' element={<Favorites />} /> */}
         </Routes>
         {/* <Puppies puppies={data}/> */}
