@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import Puppies from './components/Puppies';
+import FixedBottomNavigation from './components/FixedBottomNavigation';
+// import Puppies from './components/Puppies';
 
 const App = () => {
   const [data, setData] = useState();
@@ -28,9 +27,8 @@ const App = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <Navbar />
-        <Puppies puppies={data} />
-        <Footer />
+        {/* <Puppies puppies={data} /> */}
+        <FixedBottomNavigation puppies={data} />
       </header>
     </div>
   );
