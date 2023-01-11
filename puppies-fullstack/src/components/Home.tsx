@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,8 +23,8 @@ type DataType = {
 export default function Home({ puppies }: DataType) {
 //   const navigate = useNavigate();
   const [res, setRes] = React.useState<any[]>();
-  const [singlePuppy, setSinglePuppy] = React.useState();
-  const [length, setLength] = React.useState();
+  const [singlePuppy, setSinglePuppy] = React.useState<any[]>();
+  const [length, setLength] = React.useState<number>();
   const ref = React.useRef<HTMLDivElement>(null);
   const date = new Date();
   let d2 = date.getDate();
@@ -34,7 +35,6 @@ export default function Home({ puppies }: DataType) {
   const viewPuppyHandler = (id: string) => {
     setSinglePuppy(puppies.filter(item => item.id === id));
     setLength(1);
-    console.log(length);
   };
 
   React.useEffect(() => {
@@ -52,6 +52,7 @@ export default function Home({ puppies }: DataType) {
   }, []);
 
   if (res === undefined) return <h1>Loading Dog Pictures...</h1>;
+  if (singlePuppy === undefined) return <h1>Loading the puppy of your choice...</h1>;
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
@@ -86,7 +87,7 @@ export default function Home({ puppies }: DataType) {
                   secondary={puppy.breed}
                 />
               </ListItemButton>
-              { length === 1 ? <DeleteFavButton /> : null}
+              { length === 1 ? <DeleteFavButton singlePuppy={singlePuppy} puppies={[]} /> : null}
             </>
           );
         })}
