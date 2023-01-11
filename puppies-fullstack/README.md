@@ -1,4 +1,8 @@
-# Salt React Fullstack - TypeScript Addon
+# Under Development...
+### Puppies App (Mobile First)
+- Backend [repository](https://github.com/omgshalihin/typescript-pgp/tree/main/puppies-backend)
+
+![Screenshot 2023-01-11 at 04 22 54](https://user-images.githubusercontent.com/52775977/211711785-9857b5ce-38d9-4e2f-a5d3-29f982e6fa1d.png)
 
 ## Task
 Your task is to create a frontend to the API that you created the other day, aka `puppiesAPI`.
