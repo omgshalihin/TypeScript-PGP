@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import FixedBottomNavigation from './components/FixedBottomNavigation';
 import TopNav from './components/TopNav';
-// import Puppies from './components/Puppies';
+import Home from './components/Home';
 
 const App = () => {
   const [data, setData] = useState();
@@ -29,10 +30,13 @@ const App = () => {
     <div className="app">
       <header className="app-header">
         <TopNav />
-        <h1 className='header'>Puppies App</h1>
-        <FixedBottomNavigation puppies={data} />
+        <Routes>
+          <Route path='/' element={<Home puppies={data} />} />
+          {/* <Route path='/' element={<Favorites />} /> */}
+        </Routes>
+        {/* <Puppies puppies={data}/> */}
+        <FixedBottomNavigation />
       </header>
-
     </div>
   );
 };

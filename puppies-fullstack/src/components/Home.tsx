@@ -2,23 +2,28 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
-import './Puppies.css';
+// import { useNavigate } from 'react-router-dom';
+import './Home.css';
+import DeleteFavButton from './DeleteFavButton';
 
 type DataType = {
   puppies: {
-    id: string,
-    name: string,
-    breed: string,
-    dob: string,
-  }[]
+    id: string;
+    name: string;
+    breed: string;
+    dob: string;
+  }[];
 };
 
-export default function Puppies({ puppies } : DataType) {
+export default function Home({ puppies }: DataType) {
+//   const navigate = useNavigate();
   const [res, setRes] = React.useState<any[]>();
+  const [singlePuppy, setSinglePuppy] = React.useState();
+  const [length, setLength] = React.useState();
   const ref = React.useRef<HTMLDivElement>(null);
   const date = new Date();
   let d2 = date.getDate();
@@ -26,12 +31,22 @@ export default function Puppies({ puppies } : DataType) {
   let y2 = date.getFullYear();
   const month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+  const viewPuppyHandler = (id: string) => {
+    setSinglePuppy(puppies.filter(item => item.id === id));
+    setLength(1);
+    console.log(length);
+  };
+
   React.useEffect(() => {
     const fetchImage = async () => {
-      const response = await fetch(`https://api.unsplash.com/search/photos?page=1&per_page=30&query=dog&client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`);
+      const response = await fetch(
+        `https://api.unsplash.com/search/photos?page=1&per_page=30&query=dog&client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`,
+      );
       const newImage = await response.json();
       const result = newImage.results;
       setRes(result);
+      setSinglePuppy(puppies);
+      setLength(puppies.length);
     };
     fetchImage();
   }, []);
@@ -40,9 +55,10 @@ export default function Puppies({ puppies } : DataType) {
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
+      <h1 className="header">Adopt a Puppy</h1>
       <CssBaseline />
       <List>
-        {puppies.map((puppy, index) => {
+        {singlePuppy.map((puppy, index) => {
           const { dob } = puppy;
           const d1 = dob.split('-')[2];
           const m1 = dob.split('-')[1];
@@ -60,15 +76,18 @@ export default function Puppies({ puppies } : DataType) {
           const y = y2 - parseInt(y1, 10);
 
           return (
-                <ListItem button key={index}>
-                  <ListItemAvatar>
-                    <Avatar alt="Profile Picture" src={res[index].urls.small} />
-                  </ListItemAvatar>
-                  <ListItemText
+            <>
+              <ListItemButton key={index} onClick={() => viewPuppyHandler(puppy.id)}>
+                <ListItemAvatar>
+                  <Avatar alt="Profile Picture" src={res[index].urls.small} />
+                </ListItemAvatar>
+                <ListItemText
                   primary={`${puppy.name} : ${y} years ${m} months ${d} days old`}
                   secondary={puppy.breed}
-                  />
-                </ListItem>
+                />
+              </ListItemButton>
+              { length === 1 ? <DeleteFavButton /> : null}
+            </>
           );
         })}
       </List>
