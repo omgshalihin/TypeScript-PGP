@@ -1,9 +1,11 @@
 # Projects in this lab
-### Dog Adoption App (Mobile First)
-- Frontend [repository](https://github.com/omgshalihin/typescript-pgp/tree/main/puppies-fullstack)
-- Backend [repository](https://github.com/omgshalihin/typescript-pgp/tree/main/puppies-backend)
+### [Dog Adoption App](https://comforting-rolypoly-5e7c45.netlify.app/) (Mobile First)
+- Frontend [repository](https://github.com/omgshalihin/puppies)
+- Backend [repository](https://github.com/omgshalihin/puppies-api)
 
-![Screenshot 2023-01-11 at 04 22 54](https://user-images.githubusercontent.com/52775977/211710599-fbbb7232-2736-49a6-87ba-d1b23c0bae45.png)
+<div align="center">
+<img src='https://user-images.githubusercontent.com/52775977/211710599-fbbb7232-2736-49a6-87ba-d1b23c0bae45.png' />
+</div>
 
 # React, TypeScript, ESLint, Prettier Setup/Configurations
 
