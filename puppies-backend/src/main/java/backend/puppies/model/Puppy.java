@@ -20,4 +20,5 @@ public class Puppy {
     private String breed;
     private String name;
     private String dob;
+    private String favorite;
 }

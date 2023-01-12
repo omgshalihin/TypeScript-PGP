@@ -3,7 +3,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Stack from '@mui/material/Stack';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type DataType = {
@@ -23,7 +22,6 @@ type DataType = {
 
 export default function DeleteFavButton({ singlePuppy } : DataType) {
   const puppyId = singlePuppy[0].id;
-  const [arr, setArr] = useState<any>([]);
   const navigate = useNavigate();
 
   const deletePuppy = (id: string) => {
@@ -39,18 +37,33 @@ export default function DeleteFavButton({ singlePuppy } : DataType) {
   };
 
   const updatePuppy = (single:any) => {
-    console.log(single);
     window.localStorage.setItem('toUpdate', JSON.stringify(single[0]));
     navigate('/update');
   };
 
-  const favoritePuppy = (single: any[]) => {
-    setArr((array: any) => [...array, single[0]]);
+  const favoritePuppy = (single: any) => {
+    // console.log('favorite');
+    // window.localStorage.setItem('toFavorite', JSON.stringify(single[0]));
+    const newPup = {
+      breed: `${single[0].breed}`,
+      name: `${single[0].name}`,
+      dob: `${single[0].dob}`,
+      favorite: true,
+    };
+    fetch(`http://localhost:8080/api/puppies/${single[0].id}`, {
+      method: 'PUT',
+      mode: 'cors',
+      body: JSON.stringify(newPup),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then(() => {
+      navigate('/');
+      setTimeout(() => {
+        window.location.reload();
+      }, 200);
+    });
   };
-
-  useEffect(() => {
-    localStorage.setItem(`favPuppy${Math.random()}`, JSON.stringify(arr));
-  }, [arr]);
 
   return (
     <Stack direction="row" spacing={2}>

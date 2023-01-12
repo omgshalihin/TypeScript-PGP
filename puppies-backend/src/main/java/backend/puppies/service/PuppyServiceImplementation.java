@@ -43,6 +43,7 @@ public class PuppyServiceImplementation implements PuppyService {
         replacePuppy.setName(newPuppyDetails.getName());
         replacePuppy.setDob(newPuppyDetails.getDob());
         replacePuppy.setBreed(newPuppyDetails.getBreed());
+        replacePuppy.setFavorite(newPuppyDetails.getFavorite());
         return puppyRepository.save(replacePuppy);
     }
 }
