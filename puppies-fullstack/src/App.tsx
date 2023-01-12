@@ -5,6 +5,7 @@ import FixedBottomNavigation from './components/FixedBottomNavigation';
 import TopNav from './components/TopNav';
 import Home from './components/Home';
 import Add from './components/Add';
+import Favorite from './components/Favorite';
 
 const App = () => {
   const [data, setData] = useState();
@@ -42,6 +43,7 @@ const App = () => {
         <TopNav func={pullData} />
         <Routes>
           <Route path='/' element={<Home puppies={data} search={search} />} />
+          <Route path='/favorite' element={<Favorite />} />
           <Route path='/add' element={<Add />} />
         </Routes>
         {/* <Puppies puppies={data}/> */}

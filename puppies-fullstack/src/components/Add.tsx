@@ -3,9 +3,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import './Add.css';
 
 export default function Add() {
   const navigate = useNavigate();
@@ -42,6 +42,7 @@ export default function Add() {
 
   return (
     <Box
+      className="try"
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
@@ -83,11 +84,13 @@ export default function Add() {
         name="dob"
         onChange={handleChange}
       />
-      <Stack direction="row" spacing={2}>
-      <Button type='submit' variant="contained" endIcon={<SendIcon />}>
+      <Button
+        type="submit"
+        variant="contained"
+        endIcon={<SendIcon />}
+      >
         Submit
       </Button>
-    </Stack>
     </Box>
   );
 }

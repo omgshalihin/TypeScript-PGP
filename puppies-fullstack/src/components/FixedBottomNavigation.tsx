@@ -30,6 +30,10 @@ export default function FixedBottomNavigation({ data, func } : any) {
     navigate('/');
   };
 
+  const clickFavoriteHandler = () => {
+    navigate('/favorite');
+  };
+
   const clickAddHandler = () => {
     navigate('/add');
   };
@@ -49,7 +53,7 @@ export default function FixedBottomNavigation({ data, func } : any) {
           }}
         >
             <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={() => clickHomeHandler(data)} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} onClick={clickFavoriteHandler} />
             <BottomNavigationAction label="Add" icon={<AddCircleIcon />} onClick={clickAddHandler} />
         </BottomNavigation>
       </Paper>

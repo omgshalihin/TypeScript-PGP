@@ -23,7 +23,7 @@ export default function Home({ puppies, search }: any) {
   const month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
   const viewPuppyHandler = (id: string) => {
-    setSinglePuppy(puppies.filter((item: { id: string; }) => item.id === id));
+    setSinglePuppy(puppies.filter((item: { id: string }) => item.id === id));
     setLength(1);
   };
 
@@ -39,7 +39,12 @@ export default function Home({ puppies, search }: any) {
       setLength(puppies.length);
 
       if (search !== ' ') {
-        setSinglePuppy(puppies.filter((p: { breed: string; name: string; }) => (p.breed === search || p.name === search)));
+        setSinglePuppy(
+          puppies.filter(
+            (p: { breed: string; name: string }) => p.breed.toLowerCase() === search
+              || p.name.toLowerCase() === search,
+          ),
+        );
         if (search === '') {
           setSinglePuppy(puppies);
         }
@@ -49,7 +54,7 @@ export default function Home({ puppies, search }: any) {
   }, [search, puppies]);
 
   if (res === undefined) return <h1>Loading Dog Pictures...</h1>;
-  if (singlePuppy === undefined) return <h1>Loading the puppy of your choice...</h1>;
+  if (singlePuppy === undefined) { return <h1>Loading the puppy of your choice...</h1>; }
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
@@ -75,7 +80,10 @@ export default function Home({ puppies, search }: any) {
 
           return (
             <>
-              <ListItemButton key={index} onClick={() => viewPuppyHandler(puppy.id)}>
+              <ListItemButton
+                key={index}
+                onClick={() => viewPuppyHandler(puppy.id)}
+              >
                 <ListItemAvatar>
                   <Avatar alt="Profile Picture" src={res[index].urls.small} />
                 </ListItemAvatar>
@@ -84,7 +92,9 @@ export default function Home({ puppies, search }: any) {
                   secondary={puppy.breed}
                 />
               </ListItemButton>
-              { length === 1 ? <DeleteFavButton singlePuppy={singlePuppy} puppies={[]} /> : null}
+              {length === 1 ? (
+                <DeleteFavButton singlePuppy={singlePuppy} puppies={[]} />
+              ) : null}
             </>
           );
         })}
