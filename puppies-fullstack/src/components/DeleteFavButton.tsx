@@ -4,6 +4,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type DataType = {
   puppies: {
@@ -23,6 +24,7 @@ type DataType = {
 export default function DeleteFavButton({ singlePuppy } : DataType) {
   const puppyId = singlePuppy[0].id;
   const [arr, setArr] = useState<any>([]);
+  const navigate = useNavigate();
 
   const deletePuppy = (id: string) => {
     const url = `http://localhost:8080/api/puppies/${id}`;
@@ -34,6 +36,12 @@ export default function DeleteFavButton({ singlePuppy } : DataType) {
       },
     );
     window.location.reload();
+  };
+
+  const updatePuppy = (single:any) => {
+    console.log(single);
+    window.localStorage.setItem('toUpdate', JSON.stringify(single[0]));
+    navigate('/update');
   };
 
   const favoritePuppy = (single: any[]) => {
@@ -49,7 +57,7 @@ export default function DeleteFavButton({ singlePuppy } : DataType) {
       <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => deletePuppy(puppyId)}>
         Delete
       </Button>
-      <Button variant="contained" startIcon={<UpdateIcon />} >
+      <Button variant="contained" startIcon={<UpdateIcon />} onClick={() => updatePuppy(singlePuppy)} >
         Update
       </Button>
       <Button variant="contained" startIcon={<FavoriteIcon />} onClick={() => favoritePuppy(singlePuppy)}>
