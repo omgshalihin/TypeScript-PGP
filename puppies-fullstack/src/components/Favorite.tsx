@@ -3,7 +3,6 @@ import React from 'react';
 
 const Favorite = ({ puppies }:any) => {
   const onlyFavPuppies = puppies.filter((el: any) => el.favorite === 'true');
-  console.log(onlyFavPuppies);
 
   return (
     <>
