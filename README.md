@@ -1,11 +1,7 @@
 # Projects in this lab
-### [Dog Adoption App](https://comforting-rolypoly-5e7c45.netlify.app/) (Mobile First)
-- Frontend [repository](https://github.com/omgshalihin/puppies)
-- Backend [repository](https://github.com/omgshalihin/puppies-api)
-
-<div align="center">
-<img src='https://user-images.githubusercontent.com/52775977/211710599-fbbb7232-2736-49a6-87ba-d1b23c0bae45.png' />
-</div>
+### [`Dog Adoption App`](https://comforting-rolypoly-5e7c45.netlify.app/) (**repository**: [puppies](https://github.com/omgshalihin/puppies)).
+### [`My Tiny Blog`](https://velvety-mousse-60b7c6.netlify.app/) (**repository**: [tinyblog-react-typescript](https://github.com/omgshalihin/tinyblog-react-typescript)).
+### MVP of [`Milk Store`](https://superb-sfogliatella-51fb95.netlify.app/) (**repository**: [milk-store-FE](https://github.com/omgshalihin/milk-store-FE)).
 
 # React, TypeScript, ESLint, Prettier Setup/Configurations
 
